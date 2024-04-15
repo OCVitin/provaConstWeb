@@ -16,6 +16,6 @@
 
 ### Comando de execução do projeto:
 
-```npx nodemon```
+```npm run dev```
 
 ```npx tsc --init```
