@@ -19,12 +19,13 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const bot = new node_telegram_bot_api_1.default(process.env.TELEGRAM_TOKEN, { polling: true });
 bot.on('message', (msg) => __awaiter(void 0, void 0, void 0, function* () {
-    const chatId = msg.chat.id;
-    const userName = msg.chat.username || 'Nome de usuário não fornecido';
+    const chatId = msg.chat.id.toString();
+    const chatIdParam = msg.chat.id;
+    const userName = `${msg.chat.first_name} ${msg.chat.last_name}`;
     const messageDate = new Date(msg.date * 1000);
     const hour = messageDate.getHours();
     if (hour >= 9 && hour < 18) {
-        const userEmail = yield requestUserEmail(chatId);
+        const userEmail = yield requestUserEmail(chatIdParam);
         yield saveUserInfo(chatId, userName, userEmail);
     }
     else {
