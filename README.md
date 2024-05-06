@@ -14,7 +14,15 @@
 
 ```npm install dotenv```
 
+```npm install prisma --save-dev```
+
+```npm i express dotenv```
+
+```npm i --save-dev @types/express```
+
 ### Comando de execução do projeto:
+
+```npx prisma migrate dev --name init```
 
 ```npm run dev```
 
