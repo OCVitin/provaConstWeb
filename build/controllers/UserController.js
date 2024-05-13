@@ -45,8 +45,9 @@ class UserController {
             }
             try {
                 const newuser = yield UserDataBaseService_1.default.insertDBUser({
-                    name: body.name,
+                    userName: body.name,
                     email: body.email,
+                    chatId: body.chatId,
                 });
                 res.json({
                     status: "ok",
@@ -79,9 +80,9 @@ class UserController {
             }
             try {
                 const updatedUser = yield UserDataBaseService_1.default.updateDBUser({
-                    name: name,
+                    userName: name,
                     email: email,
-                }, parseInt(id));
+                }, id);
                 res.json({
                     status: "ok",
                     newuser: updatedUser,
@@ -105,7 +106,7 @@ class UserController {
                 });
             }
             try {
-                const response = yield UserDataBaseService_1.default.deleteDBUser(parseInt(id));
+                const response = yield UserDataBaseService_1.default.deleteDBUser(id);
                 if (response) {
                     res.json({
                         status: "ok",

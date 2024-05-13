@@ -26,7 +26,7 @@ class UserDataBaseService {
     }
   }
 
-  async updateDBUser(user: Prisma.UserUpdateInput, id: number) {
+  async updateDBUser(user: Prisma.UserUpdateInput, id: string) {
     try {
       const updatedUser = await prisma.user.update({
         data: user,
@@ -41,7 +41,7 @@ class UserDataBaseService {
     }
   }
 
-  async deleteDBUser(id: number) {
+  async deleteDBUser(id: string) {
     try {
       await prisma.user.delete({
         where: {

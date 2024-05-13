@@ -33,8 +33,9 @@ class UserController {
 
     try {
       const newuser = await UserDataBaseService.insertDBUser({
-        name: body.name,
+        userName: body.name,
         email: body.email,
+        chatId: body.chatId,
       });
       res.json({
         status: "ok",
@@ -68,10 +69,10 @@ class UserController {
     try {
       const updatedUser = await UserDataBaseService.updateDBUser(
         {
-          name: name,
+          userName: name,
           email: email,
         },
-        parseInt(id)
+        id
       );
       res.json({
         status: "ok",
@@ -95,7 +96,7 @@ class UserController {
     }
 
     try {
-      const response = await UserDataBaseService.deleteDBUser(parseInt(id));
+      const response = await UserDataBaseService.deleteDBUser(id);
       if (response) {
         res.json({
           status: "ok",
