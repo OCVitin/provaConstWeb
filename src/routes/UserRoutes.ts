@@ -1,9 +1,10 @@
-import { Router } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import UserController from "../controllers/UserController";
+import AuthMiddlewares from "../middlewares/AuthMiddlewares";
 
 const UserRouter = Router();
 
-UserRouter.get("/api/users", UserController.listUsers);
+UserRouter.get("/api/users", AuthMiddlewares.auth, UserController.listUsers);
 
 UserRouter.post("/api/user", UserController.createUser);
 
